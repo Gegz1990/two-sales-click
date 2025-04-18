@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klickschulung für TwoSales 2.0</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- Header mit Logo -->
+  <header>
+    <a href="index.html">
+      <img src="https://www.sternauto.de/_assets/7b3ba8bb3871137dffa4d9cccacf730f/Images/logo_sternauto_s.svg" alt="Sternauto Logo" class="logo">
+    </a>
+    <h1>Lead Management System</h1> <!-- Überschrift im Header -->
+  </header>
+
+  <!-- Inhalt der Seite -->
+  <div class="content">
+
+  </div>
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+      <!-- Slide 1 -->
+      <div class="slide fade">
+        <div class="slide-image-wrapper">
+          <img src="images/01.jpeg" alt="Slide 1">
+          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+        </div>
+        <p>Das ist das erste Bild.</p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide fade">
+        <div class="slide-image-wrapper">
+          <img src="images/04.gif" alt="Slide 2">
+          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+        </div>
+        <p>Das ist das zweite Bild.</p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide fade">
+        <div class="slide-image-wrapper">
+          <img src="images/03.jpeg" alt="Slide 3">
+          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+        </div>
+        <p>Das ist das dritte Bild.</p>
+      </div>
+    </div>
+
+    <!-- Button "Zurück zur Übersicht" -->
+    <div class="button-container">
+      <button onclick="goToOverview()">Zurück zur Übersicht</button>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      if (slideIndex < 1) { slideIndex = slides.length; }
+      slides[slideIndex - 1].style.display = "flex";
+    }
+
+    function moveSlide(n) {
+      slideIndex += n;
+      showSlides();
+    }
+
+    function goToOverview() {
+      window.location.href = "index.html"; // Leitet zur Übersicht (index.html)
+    }
+
+    // Initialisiere die Slideshow
+    showSlides();
+  </script>
+
+</body>
+</html>

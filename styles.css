@@ -1,0 +1,186 @@
+/* Globale Einstellungen */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #83AEB2;
+    }
+
+/* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 10px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between; /* Verteilt den Platz gleichmäßig zwischen Logo und Überschrift */
+      align-items: center; /* Zentriert die Elemente vertikal */
+    }
+
+    header .logo {
+      width: 200px; /* Oder jede gewünschte Breite */
+      height: auto;
+    }
+
+    header h1 {
+      margin: 0;
+      text-align: center; /* Zentriert die Überschrift */
+      flex-grow: 1; /* Überschrift nimmt den verbleibenden Platz ein */
+      text-align: center; /* sorgt dafür, dass die Überschrift zentriert bleibt */
+    
+    }
+
+/* Inhalt der Seite */
+    .content {
+      padding-top: 80px; /* Damit der Inhalt nicht vom fixierten Header überdeckt wird */
+      text-align: center;
+      margin: 0;
+      padding: 50px;
+    }
+    
+
+    /* Slideshow Container */
+    .slideshow-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Die einzelnen Slides */
+    .slide {
+      display: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+      position: relative;
+    }
+
+    .slide-image-wrapper {
+      position: relative;
+      width: 60%;
+    }
+
+    .slide-image-wrapper img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .slide p {
+      flex: 1;
+      font-size: 18px;
+      color: white;
+    }
+
+    /* Die Navigation-Buttons am Rand der Bilder positionieren */
+    .slide .prev, .slide .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      padding: 16px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .slide .prev {
+      left: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .slide .next {
+      right: 0;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .slide .prev:hover,
+    .slide .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .button-container {
+      margin-top: 20px;
+      text-align: right; /* Button nach rechts ausrichten */
+      margin-right: 20px; /* Abstand vom rechten Rand */
+    }
+
+    .button-container button {
+      background-color: #FF5722;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: inline-block; /* Sicherstellen, dass der Button als Block-Element erscheint */
+    }
+
+    .button-container button:hover {
+      background-color: #b6e619;
+    }
+
+    /* Kacheln Container */
+    .tiles-container {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    /* Kacheln */
+    .tile {
+      background-color: #FF5722;
+      color: white;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 8px;
+      text-align: center;
+      width: clamp(80px, 13vw, 140px);
+      height: clamp(80px, 12vw, 120px);
+      display: flex;
+      flex-direction: column;  /* ← sorgt dafür, dass h2 über p steht */
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .tile h2 {
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      word-break: break-word;
+      text-align: center;
+      line-height: 1.2;
+    }   
+    .tile p {
+      font-size: clamp(0.7rem, 1.5vw, 1rem);
+      margin-top: 8px;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .tile:hover {
+      background-color: #952d00;  
+    }
+
+/* New rule for <a> elements inside .tile to ensure vertical stacking */
+.tile a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
