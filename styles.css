@@ -1,177 +1,202 @@
 /* Globale Einstellungen */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #83AEB2;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #83AEB2;
+}
 
 /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      padding: 10px;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between; /* Verteilt den Platz gleichmäßig zwischen Logo und Überschrift */
-      align-items: center; /* Zentriert die Elemente vertikal */
-    }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between; /* Verteilt den Platz gleichmäßig zwischen Logo und Überschrift */
+  align-items: center; /* Zentriert die Elemente vertikal */
+  flex-wrap: wrap; /* sorgt dafür, dass die Elemente bei kleineren Bildschirmgrößen umgebrochen werden */
+}
 
-    header .logo {
-      width: 200px; /* Oder jede gewünschte Breite */
-      height: auto;
-    }
+header .logo-left {
+  width: clamp(120px, 20vw, 200px); /* Sternauto-Logo */
+  height: auto;
 
-    header h1 {
-      margin: 0;
-      text-align: center; /* Zentriert die Überschrift */
-      flex-grow: 1; /* Überschrift nimmt den verbleibenden Platz ein */
-      text-align: center; /* sorgt dafür, dass die Überschrift zentriert bleibt */
-    
-    }
+}
+
+header h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 2.5rem); /* Dynamische Schriftgröße */
+  word-wrap: break-word; /* Erlaubt Zeilenumbrüche, wenn der Text zu lang ist */
+  white-space: normal; /* Verhindert, dass der Text in einer einzigen Zeile bleibt */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* Inhalt der Seite */
-    .content {
-      padding-top: 80px; /* Damit der Inhalt nicht vom fixierten Header überdeckt wird */
-      text-align: center;
-      margin: 0;
-      padding: 50px;
-    }
-    
+.content {
+  text-align: center;
+  margin: 0;
+  padding: 50px;
+}
 
-    /* Slideshow Container */
-    .slideshow-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
+/* Slideshow Container */
+.slideshow-container {
+  width: calc(100% - 40px); /* 20px Abstand links und rechts */
+  margin: 0 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 100px;
+  z-index: 0;
+}
 
-    /* Die einzelnen Slides */
-    .slide {
-      display: none;
-      flex-direction: row;
-      align-items: center;
-      gap: 20px;
-      text-align: left;
-      position: relative;
-    }
+/* Die einzelnen Slides */
+.slide {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;  /* Bild und Text oben ausrichten */
+  align-items: flex-start; /* Elemente oben ausrichten */
+  gap: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 1200px;
+}
 
-    .slide-image-wrapper {
-      position: relative;
-      width: 60%;
-    }
+.slide-image-wrapper {
+  position: relative;
+  width: 60%; /* Bild nimmt 40% des Containers ein */
+}
 
-    .slide-image-wrapper img {
-      width: 100%;
-      border-radius: 8px;
-      display: block;
-    }
+.slide-image-wrapper img {
+  width: 100%;
+  height: auto;  /* Höhe wird automatisch angepasst, um das Seitenverhältnis zu bewahren */
+  object-fit: contain; /* Bild wird skaliert, ohne das Seitenverhältnis zu verlieren */
+  display: block;
+  border-radius: 8px;
+}
 
-    .slide p {
-      flex: 1;
-      font-size: 18px;
-      color: white;
-    }
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Text links ausrichten */
+  width: 60%; /* Text nimmt 60% des Containers ein */
+  padding: 0 20px;
+}
 
-    /* Die Navigation-Buttons am Rand der Bilder positionieren */
-    .slide .prev, .slide .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 18px;
-      padding: 16px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      user-select: none;
-      z-index: 1;
-    }
+.slide p {
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Dynamische Schriftgröße */
+  text-align: left; /* Text linksbündig */
+  margin-top: 20px;
+  line-height: 1.6;
+  word-wrap: break-word; /* Automatischer Textumbruch */
+  word-break: break-word; /* Verhindert das Überlaufen des Textes */
+}
+.slide h2 {
+  font-size: clamp(1.2rem, 2.5vw, 2rem); /* Dynamische Schriftgröße für die Überschrift */
+  font-weight: bold;
+  margin-bottom: 10px;
+  word-wrap: break-word; /* Erlaubt Zeilenumbrüche, wenn der Text zu lang ist */
+  white-space: normal; /* Verhindert, dass der Text in einer einzigen Zeile bleibt */
+}
 
-    .slide .prev {
-      left: 0;
-      border-radius: 3px 0 0 3px;
-    }
+.slide-navigation {
+  position: absolute;
+  top: 130px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
 
-    .slide .next {
-      right: 0;
-      border-radius: 0 3px 3px 0;
-    }
+button, .prev-slide, .next-slide {
+  background-color: #FF5722;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(14px, 3vw, 16px); /* Dynamische Schriftgröße */
+  display: inline-block;
+  width: auto; /* Automatische Breite für Flexibilität */
+  text-align: center;
+}
 
-    .slide .prev:hover,
-    .slide .next:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
+button:hover, .prev-slide:hover, .next-slide:hover {
+  background-color: #952d00;
+}
 
-    .button-container {
-      margin-top: 20px;
-      text-align: right; /* Button nach rechts ausrichten */
-      margin-right: 20px; /* Abstand vom rechten Rand */
-    }
+.button-container {
+  position: absolute;
+  top: 80px; /* Direkt unterhalb des Headers */
+  left: 20px; /* Positioniert den Button links */
+  z-index: 10; /* Damit der Button über anderen Inhalten bleibt */
+}
 
-    .button-container button {
-      background-color: #FF5722;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      display: inline-block; /* Sicherstellen, dass der Button als Block-Element erscheint */
-    }
+.button-container button {
+  background-color: #FF5722;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(14px, 3vw, 16px);
+  width: auto; /* Breite der Buttons anpassen */
+  text-align: center;
+}
 
-    .button-container button:hover {
-      background-color: #b6e619;
-    }
+.button-container button:hover {
+  background-color: #952d00;
+}
 
-    /* Kacheln Container */
-    .tiles-container {
-      display: flex;
-      justify-content: space-around;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
+/* Kacheln Container */
+.tiles-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
 
-    /* Kacheln */
-    .tile {
-      background-color: #FF5722;
-      color: white;
-      padding: 20px;
-      margin: 10px;
-      border-radius: 8px;
-      text-align: center;
-      width: clamp(80px, 13vw, 140px);
-      height: clamp(80px, 12vw, 120px);
-      display: flex;
-      flex-direction: column;  /* ← sorgt dafür, dass h2 über p steht */
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
+/* Kacheln */
+.tile {
+  background-color: #FF5722;
+  color: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: clamp(80px, 13vw, 140px);
+  height: clamp(100px, 16vw, 160px);
+  display: flex;
+  flex-direction: column;  /* ← sorgt dafür, dass h2 über p steht */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
-    .tile h2 {
-      margin: 0;
-      font-size: clamp(1rem, 2vw, 1.5rem);
-      word-break: break-word;
-      text-align: center;
-      line-height: 1.2;
-    }   
-    .tile p {
-      font-size: clamp(0.7rem, 1.5vw, 1rem);
-      margin-top: 8px;
-      line-height: 1.3;
-      text-align: center;
-    }
-    .tile:hover {
-      background-color: #952d00;  
-    }
+.tile h2 {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  word-break: break-word;
+  text-align: center;
+  line-height: 1.2;
+}   
+.tile p {
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  margin-top: 8px;
+  line-height: 1.3;
+  text-align: center;
+}
+.tile:hover {
+  background-color: #952d00;  
+}
 
 /* New rule for <a> elements inside .tile to ensure vertical stacking */
 .tile a {
@@ -183,4 +208,62 @@
   height: 100%;
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 768px) {
+  /* Für kleinere Bildschirme: Button-Größe anpassen */
+  button, .prev-slide, .next-slide {
+    font-size: clamp(12px, 4vw, 14px); /* Kleinere Schriftgröße auf mobilen Geräten */
+    padding: 8px 16px; /* Etwas kleinere Button-Größe */
+  }
+
+  .button-container button {
+    font-size: clamp(12px, 4vw, 14px);
+    padding: 8px 16px;
+  }
+
+  .slide-navigation .prev-slide,
+  .slide-navigation .next-slide {
+    font-size: clamp(12px, 4vw, 14px);
+    padding: 8px 16px;
+  }
+
+  .slide {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slide-image-wrapper {
+    width: 100%;
+  }
+
+  .slide p {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .slide .prev-slide,
+  .slide .next-slide {
+    top: unset;
+    bottom: 10px;
+    transform: none;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .slide .prev-slide {
+    left: 10px;
+  }
+
+  .slide .next-slide {
+    right: 10px;
+  }
+}
+.slide .slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Links ausrichten */
+  width: 100%;
+  padding: 0 20px;
+  max-width: 100%;  /* Verhindert, dass der Text über den Container hinausgeht */
 }

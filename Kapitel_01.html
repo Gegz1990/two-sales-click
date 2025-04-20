@@ -5,58 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klickschulung für TwoSales 2.0</title>
   <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .important-text {
+      color:#FF5722;
+      font-weight: bold;
+    }
+    #slide-number {
+      font-size: auto;
+      font-weight: bold;
+      color: black; 
+      display: inline-block;
+      text-align: center;
+    }
+    .slide-navigation {
+      position: absolute;
+      top: 130px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 10;
+    }
+    .slide-navigation .prev-slide {
+      visibility: hidden;
+    }
+    .slide-navigation .prev-slide.show {
+      visibility: visible;
+    }
+    /* Standard Cursor für nicht vergrößerte Bilder */
+    .slide-image-wrapper img {
+      cursor: zoom-in;
+    }
+    /* Cursor für vergrößerte Bilder */
+    .slide-image-wrapper img.zoomed {
+      cursor: zoom-out;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header mit Logo -->
+
   <header>
     <a href="index.html">
-      <img src="https://www.sternauto.de/_assets/7b3ba8bb3871137dffa4d9cccacf730f/Images/logo_sternauto_s.svg" alt="Sternauto Logo" class="logo">
+      <img src="https://www.sternauto.de/_assets/7b3ba8bb3871137dffa4d9cccacf730f/Images/logo_sternauto_s.svg" alt="Sternauto Logo" class="logo-left">
     </a>
-    <h1>Plattformnavigation</h1> <!-- Überschrift im Header -->
+    <h1>Plattformnavigation</h1>
   </header>
-
-  <!-- Inhalt der Seite -->
+  <div class="button-container">
+    <button onclick="goToOverview()">Zurück zur Übersicht</button>
+  </div>
+  <div class="slide-navigation">
+    <button class="prev-slide" onclick="moveSlide(-1)" style="display: inline-block;">Zurück</button>
+    <p id="slide-number"></p>
+    <button class="next-slide" onclick="moveSlide(1)" style="display: inline-block;">Weiter</button>
+  </div>
   <div class="content">
 
   </div>
-    <!-- Slideshow -->
+
     <div class="slideshow-container">
-      <!-- Slide 1 -->
       <div class="slide fade">
         <div class="slide-image-wrapper">
           <img src="images/01.jpeg" alt="Slide 1" onclick="toggleImageSize(this)">
-          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlide(1)">&#10095;</a>
         </div>
-        <p>Das ist das erste Bild.</p>
+        <div class="slide-content">
+          <h2>Loggen Sie sich ein</h2>
+          <p>Um sich bei <a href="https://login40.two-sales.de/?i_kundennummer=4012135002" target="_blank">TwoSales</a> anzumelden geben Sie Ihre Zugangsdaten ein</p>
+          <p><span class="important-text">Wichtig: </span>Achten Sie auf die korrekte Schreibweise bei Ihrem Account</p>
+        </div>
       </div>
-
-      <!-- Slide 2 -->
       <div class="slide fade">
         <div class="slide-image-wrapper">
-          <img src="images/04.gif" alt="Slide 2" onclick="toggleImageSize(this)">
-          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+          <img src="images/02.gif" alt="Slide 2" onclick="toggleImageSize(this)">
         </div>
-        <p>Das ist das zweite Bild.</p>
+        <div class="slide-content">
+          <h2>Schnellnavigation</h2>
+          <p>Um schnell in einen anderen Bereich zu wechseln nutzen Sie die Schnellnavigation. Fahren Sie dafür mit der Maus über die Reiter. Es erscheinen weitere Submenüs die mit einem Klick bestätigen</p>
+          <p>Für ausgegraute Bereiche haben Sie keine Berechtigung</p>
+        </div>
       </div>
-
-      <!-- Slide 3 -->
       <div class="slide fade">
         <div class="slide-image-wrapper">
-          <img src="images/03.jpeg" alt="Slide 3" onclick="toggleImageSize(this)">
-          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+          <img src="images/03.gif" alt="Slide 3" onclick="toggleImageSize(this)">
         </div>
-        <p>Das ist das dritte Bild.</p>
-      </div>
+        <div class="slide-content">
+          <h2>Suchfunktion</h2>
+          <p>Sie können die Suchfunktion nutzen um Fahrzeuge z.B. nach:
+              <li>Auftragsnummer</li>
+              <li>Lagerbuchnummer</li>
+              <li>Bestandteile einer FIN</li>
+              <li>Kennzeichen</li>
+        <p>zu suchen</p>
+            
+          
+        </div>
+      </div>      
+      <div class="slide fade">
+        <div class="slide-image-wrapper">
+          <img src="images/04.jpeg" alt="Slide 4" onclick="toggleImageSize(this)">
+        </div>
+        <div class="slide-content">
+          <h2>Schnellnavigation</h2>
+          <p>Um schnell in einen anderen Bereich zu wechseln nutzen Sie die Schnellnavigation. Fahren Sie dafür mit der Maus über die Reiter. Es erscheinen weitere Submenüs die mit einem Klick bestätigen</p>
+          <p>Für ausgegraute Bereiche haben Sie keine Berechtigung</p>
+        </div>
+      </div>      
     </div>
 
-    <!-- Button "Zurück zur Übersicht" -->
-    <div class="button-container">
-      <button onclick="goToOverview()">Zurück zur Übersicht</button>
-    </div>
+
+    
   </div>
   <script>
     let slideIndex = 1;
@@ -69,6 +126,27 @@
       if (slideIndex > slides.length) { slideIndex = 1; }
       if (slideIndex < 1) { slideIndex = slides.length; }
       slides[slideIndex - 1].style.display = "flex";
+      // Aktualisiere die Anzeige der aktuellen Slide-Zahl
+      document.getElementById("slide-number").textContent = `${slideIndex} / ${slides.length}`;
+      toggleNavigationButtons();  // Steuerung der Sichtbarkeit der Buttons
+    }
+
+    function toggleNavigationButtons() {
+      let slides = document.getElementsByClassName("slide");
+      let prevButton = document.querySelector(".prev-slide");
+      let nextButton = document.querySelector(".next-slide");
+
+      if (slideIndex === 1) {
+        prevButton.classList.remove("show");
+      } else {
+        prevButton.classList.add("show");
+      }
+
+      if (slideIndex === slides.length) {
+        nextButton.style.visibility = "hidden";  // Button ausblenden, aber im DOM behalten
+      } else {
+        nextButton.style.visibility = "visible";  // Button anzeigen
+      }
     }
 
     function moveSlide(n) {
@@ -77,20 +155,20 @@
     }
 
     function goToOverview() {
-      window.location.href = "index.html"; // Leitet zur Übersicht (index.html)
+      window.location.href = "index.html"; 
     }
 
     function toggleImageSize(imgElement) {
-      // Überprüfen, ob das Bild derzeit vergrößert ist
-      if (imgElement.style.transform === "scale(2)") {
-        imgElement.style.transform = "scale(1)"; // Zurück zur Normalgröße
+      if (imgElement.classList.contains("zoomed")) {
+        imgElement.classList.remove("zoomed");
+        imgElement.style.transform = "scale(1)";
       } else {
-        imgElement.style.transform = "scale(2)"; // Bild vergrößern
+        imgElement.classList.add("zoomed");
+        imgElement.style.transform = "scale(2)";
       }
-      imgElement.style.transition = "transform 0.3s ease"; // Übergangseffekt für die Transformation
+      imgElement.style.transition = "transform 0.3s ease";
     }
 
-    // Initialisiere die Slideshow
     showSlides();
   </script>
 
