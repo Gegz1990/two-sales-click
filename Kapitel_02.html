@@ -3,62 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Klickschulung für TwoSales 2.0</title>
+  <title>Mein Profil</title>
   <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .important-text {
+      color:#FF5722;
+      font-weight: bold;
+    }
+    #slide-number {
+      font-size: auto;
+      font-weight: bold;
+      color: black; 
+      display: inline-block;
+      text-align: center;
+    }
+    .slide-navigation {
+      position: absolute;
+      top: 130px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 10;
+    }
+    .slide-navigation .prev-slide {
+      visibility: hidden;
+    }
+    .slide-navigation .prev-slide.show {
+      visibility: visible;
+    }
+    /* Standard Cursor für nicht vergrößerte Bilder */
+    .slide-image-wrapper img {
+      cursor: zoom-in;
+    }
+    /* Cursor für vergrößerte Bilder */
+    .slide-image-wrapper img.zoomed {
+      cursor: zoom-out;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header mit Logo -->
+
   <header>
     <a href="index.html">
-      <img src="https://www.sternauto.de/_assets/7b3ba8bb3871137dffa4d9cccacf730f/Images/logo_sternauto_s.svg" alt="Sternauto Logo" class="logo">
+      <img src="https://www.sternauto.de/_assets/7b3ba8bb3871137dffa4d9cccacf730f/Images/logo_sternauto_s.svg" alt="Sternauto Logo" class="logo-left">
     </a>
-    <h1>Lead Management System</h1> <!-- Überschrift im Header -->
+    <h1>Mein Profil</h1>
   </header>
-
-  <!-- Inhalt der Seite -->
-  <div class="content">
-
+  <div class="button-container">
+    <button onclick="goToOverview()">Zurück zur Übersicht</button>
   </div>
-    <!-- Slideshow -->
-    <div class="slideshow-container">
-      <!-- Slide 1 -->
+  <div class="slide-navigation">
+    <button class="prev-slide" onclick="moveSlide(-1)" style="display: inline-block;">Zurück</button>
+    <p id="slide-number"></p>
+    <button class="next-slide" onclick="moveSlide(1)" style="display: inline-block;">Weiter</button>
+  </div>
+    <div class="content">
+    </div>
+      <div class="slideshow-container">
+        <div class="slide fade">
+          <div class="slide-image-wrapper">
+          <img src="images/02/01.jpeg" alt="Slide 1" onclick="toggleImageSize(this)">
+        </div>
+        <div class="slide-content">
+          <h2>Signatur festlegen</h2>
+          <p>Kopieren Sie sich Ihre e-Mail Signatur in das Feld "Email Signatur" und "Formular Signatur".</p>
+          <p><span class="important-text">Wichtig: </span>Bilder können nicht übernommen werden</p>
+        </div>
+      </div>
       <div class="slide fade">
         <div class="slide-image-wrapper">
-          <img src="images/01.jpeg" alt="Slide 1">
-          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+          <img src="images/02/02.jpeg" alt="Slide 2" onclick="toggleImageSize(this)">
         </div>
-        <p>Das ist das erste Bild.</p>
+        <div class="slide-content">
+          <h2>LMS-Einstellungen</h2>
+          <p>Legen Sie hier Ihre Präferenzen für das Lead Management Modul fest</p>
+          <p><span class="important-text">Wichtig: </span>Das LMS befindet sich aktuell noch in der Weiterentwicklung weswegen es insbesondere bei Info-Mails noch zu Komplikationen kommen kann. Nutzen Sie bitte daher weiterhin das BDC-LMS. Wir kommunizieren rechtzeitig, wenn es zu Änderungen kommt.</p>
+        </div>
       </div>
-
-      <!-- Slide 2 -->
       <div class="slide fade">
         <div class="slide-image-wrapper">
-          <img src="images/04.gif" alt="Slide 2">
-          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+          <img src="images/02/03.gif" alt="Slide 3" onclick="toggleImageSize(this)">
         </div>
-        <p>Das ist das zweite Bild.</p>
-      </div>
-
-      <!-- Slide 3 -->
+        <div class="slide-content">
+          <h2>Standard-Layouts</h2>
+        <p>Legen Sie im Bereich "Formular Layouts" Ihren Standard fest. Sie haben die Wahl zwischen einen Mercedes-Benz, STERNAUTO und einem smart Layout.</p>
+            
+          
+        </div>
+      </div>      
       <div class="slide fade">
         <div class="slide-image-wrapper">
-          <img src="images/03.jpeg" alt="Slide 3">
-          <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-          <a class="next" onclick="moveSlide(1)">&#10095;</a>
+          <img src="images/01/04.jpeg" alt="Slide 4" onclick="toggleImageSize(this)">
         </div>
-        <p>Das ist das dritte Bild.</p>
-      </div>
+        <div class="slide-content">
+          <h2>Weiteres Fenster</h2>
+          <p>klicken Sie auf das plus Symbol um einen weiteren Tab innerhalb von twoSales zu öffen. So können Sie bspw. mehrere Fahrzeuge miteiander vergleichen</p>
+        </div>
+      </div>      
+      <div class="slide fade">
+        <div class="slide-image-wrapper">
+          <img src="images/01/05.gif" alt="Slide 5" onclick="toggleImageSize(this)">
+        </div>
+        <div class="slide-content">
+          <h2>Burgermenü</h2>
+          <p>Über das Burgermenü können Sie weitere Informationen zur TwoSales Website abrufen</p>
+          <p>Über den Reiter "Mein Profil" können Sie individuelle Einstellungen zu Ihren Standard TwoSales Ansichten vornehmen (Siehe dazu <a href="Kapitel_02.html" target="_blank">Kapitel 2</a>)</p>
+        </div>
     </div>
 
-    <!-- Button "Zurück zur Übersicht" -->
-    <div class="button-container">
-      <button onclick="goToOverview()">Zurück zur Übersicht</button>
-    </div>
-  </div>
 
+    
+  </div>
   <script>
     let slideIndex = 1;
 
@@ -70,6 +127,27 @@
       if (slideIndex > slides.length) { slideIndex = 1; }
       if (slideIndex < 1) { slideIndex = slides.length; }
       slides[slideIndex - 1].style.display = "flex";
+      // Aktualisiere die Anzeige der aktuellen Slide-Zahl
+      document.getElementById("slide-number").textContent = `${slideIndex} / ${slides.length}`;
+      toggleNavigationButtons();  // Steuerung der Sichtbarkeit der Buttons
+    }
+
+    function toggleNavigationButtons() {
+      let slides = document.getElementsByClassName("slide");
+      let prevButton = document.querySelector(".prev-slide");
+      let nextButton = document.querySelector(".next-slide");
+
+      if (slideIndex === 1) {
+        prevButton.classList.remove("show");
+      } else {
+        prevButton.classList.add("show");
+      }
+
+      if (slideIndex === slides.length) {
+        nextButton.style.visibility = "hidden";  // Button ausblenden, aber im DOM behalten
+      } else {
+        nextButton.style.visibility = "visible";  // Button anzeigen
+      }
     }
 
     function moveSlide(n) {
@@ -78,10 +156,20 @@
     }
 
     function goToOverview() {
-      window.location.href = "index.html"; // Leitet zur Übersicht (index.html)
+      window.location.href = "index.html"; 
     }
 
-    // Initialisiere die Slideshow
+    function toggleImageSize(imgElement) {
+      if (imgElement.classList.contains("zoomed")) {
+        imgElement.classList.remove("zoomed");
+        imgElement.style.transform = "scale(1)";
+      } else {
+        imgElement.classList.add("zoomed");
+        imgElement.style.transform = "scale(2)";
+      }
+      imgElement.style.transition = "transform 0.3s ease";
+    }
+
     showSlides();
   </script>
 

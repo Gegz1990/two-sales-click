@@ -70,7 +70,7 @@ header h1 {
 
 .slide-image-wrapper {
   position: relative;
-  width: 60%; /* Bild nimmt 40% des Containers ein */
+  width: 100%; 
 }
 
 .slide-image-wrapper img {
