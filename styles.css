@@ -209,7 +209,50 @@ button:hover, .prev-slide:hover, .next-slide:hover {
   text-decoration: none;
   color: inherit;
 }
+.tile2 {
+  background-color: #20b879;
+  color: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: clamp(80px, 13vw, 140px);
+  height: clamp(100px, 16vw, 160px);
+  display: flex;
+  flex-direction: column;  /* ← sorgt dafür, dass h2 über p steht */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
+.tile2 h2 {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  word-break: break-word;
+  text-align: center;
+  line-height: 1.2;
+}   
+.tile2 p {
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  margin-top: 8px;
+  line-height: 1.3;
+  text-align: center;
+}
+.tile2:hover {
+  background-color: #952d00;  
+}
+
+/* New rule for <a> elements inside .tile to ensure vertical stacking */
+.tile2 a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
 @media (max-width: 768px) {
   /* Für kleinere Bildschirme: Button-Größe anpassen */
   button, .prev-slide, .next-slide {
